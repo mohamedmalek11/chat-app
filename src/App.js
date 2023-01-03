@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
 
+const style = {
+  appContainer: `max-w-[728px] mx-auto text-center`,
+  sectionContainer: `flex flex-col h-[90vh] bg-gray-100 mt-10 shadow-xl border relative`,
+};
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.appContainer}>
+      <section className={style.sectionContainer}>
+        <Navbar />
+      </section>
     </div>
   );
 }

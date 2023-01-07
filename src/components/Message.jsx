@@ -6,12 +6,16 @@ const style = {
 rounded-bl-full`,
   received: `bg-[#e5e5ea] text-black float-left rounded-br-full`,
 };
-function Message() {
+function Message({ messages: messages }) {
   return (
     <div>
       <div className={style.message}>
         <p className={style.name}>MOHAMED</p>
-        <p>hello message Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, ea.</p>
+        <p>
+          {messages.map((message) => {
+            return message.text;
+          })}
+        </p>
       </div>
     </div>
   );

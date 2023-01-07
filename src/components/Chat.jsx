@@ -1,14 +1,39 @@
-import React, { useRef } from "react";
+import { async } from "@firebase/util";
+import {
+  query,
+  collection,
+  orderBy,
+  onSnapshot,
+} from "firebase/firestore";
+import React, { useEffect, useRef, useState } from "react";
+import { db } from "../firebase";
 import Message from "./Message";
 const style = {
   main: `flex felx-col p-[10px] relative`,
 };
 function Chat() {
-    const scroll = useRef()
+  const [messages, setmessages] = useState([]);
+  const scroll = useRef();
+  useEffect(() => {
+
+      const citiesRef = collection(db, "messages");
+      const q = query(citiesRef, orderBy("timestamp"));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        let messages = [];
+        querySnapshot.forEach((doc) => {
+          console.log(doc.data())
+          messages.push({ ...doc.data(), id: doc.id });
+        });
+        setmessages(messages);
+      });
+
+    return () => unsubscribe();
+  }, []);
+  
   return (
     <>
       <main className={style.main}>
-        <Message />
+        <Message messages={messages}/>
       </main>
       <span ref={scroll}></span>
     </>

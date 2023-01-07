@@ -14,7 +14,6 @@ function Chat() {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let messages = [];
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
         messages.push({ ...doc.data(), id: doc.id });
       });
       setmessages(messages);

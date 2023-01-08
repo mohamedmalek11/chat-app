@@ -3,11 +3,11 @@ import { useRef, useState } from "react";
 import { addDoc, serverTimestamp, collection } from "firebase/firestore";
 
 const style = {
-  form: ` w-full max-w-[728px] flex text-l absolute bottom-0`,
+  form: ` w-full max-w-[728px] flex text-l fixed bottom-0`,
   input: `w-full text-l p-3 bg-gray-900 text-white outline-none border-none`,
   button: `w-[20%] text-white bg-rose-500`,
 };
-const SendMessage = () => {
+const SendMessage = ({ scroll }) => {
   const inputElement = useRef();
   const [input, setInput] = useState("");
 
@@ -22,11 +22,11 @@ const SendMessage = () => {
           uid,
           timestamp: serverTimestamp(),
         });
+        setInput("")
+        inputElement.current.focus();
+    scroll.current.scrollIntoView({behavior: "smooth"});
   };
-  const focusInput = () => {
-    inputElement.current.focus();
-    inputElement.current.value = "";
-  };
+
   return (
     <form onSubmit={sendNessageValue} className={style.form}>
       <input
@@ -39,7 +39,7 @@ const SendMessage = () => {
           setInput(e.target.value);
         }}
       />
-      <button className={style.button} onClick={focusInput} type="submit">
+      <button className={style.button} type="submit">
         Send
       </button>
     </form>

@@ -3,9 +3,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
+
 const style = {
   main: `flex flex-col p-[10px] pb-[40px] absolute top-[5rem] left-0 right-0 bottom-0 overflow-y-scroll`,
 };
+
 function Chat() {
   const [messages, setmessages] = useState([]);
   const scroll = useRef();
@@ -30,10 +32,10 @@ function Chat() {
           ? messages.map((message) => {
               return <Message message={message} key={message.id} />;
             })
-          : null}
+          : "loading.."}
+        <span ref={scroll}></span>
       </main>
-      <SendMessage scroll={scroll} />
-      <span ref={scroll}></span>
+        <SendMessage scroll={scroll} />
     </>
   );
 }

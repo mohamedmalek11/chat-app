@@ -13,7 +13,7 @@ function Chat() {
   const scroll = useRef();
   useEffect(() => {
     const citiesRef = collection(db, "messages");
-    const q = query(citiesRef);
+    const q = query(citiesRef, orderBy("timestamp"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let messages = [];
       querySnapshot.forEach((doc) => {

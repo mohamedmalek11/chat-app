@@ -3,9 +3,9 @@ const style = {
   message: `flex flex-col relative text-start`,
   messageStart: `items-start`,
   messageEnd: `items-end`,
-  name: `text-gray-600 text-xs  mx-4`,
+  name: `text-gray-600 text-xs  mx-2`,
   text: `shadow-xl m-2 mt-1 mb-4 py-1 px-[10px] rounded`,
-  sent: `bg-[#395dff] text-white flex-row-reverse rounded`,
+  sent: `bg-lime-700 text-white flex-row-reverse rounded`,
   received: `bg-[#e5e5ea] text-black rounded`,
 };
 function Message({ message }) {
@@ -16,8 +16,8 @@ function Message({ message }) {
 
   const messageClass =
     message.uid === auth.currentUser.uid
-      ? `${style.messageStart}`
-      : `${style.messageEnd}`;
+      ? `${style.messageEnd}`
+      : `${style.messageStart}`;
   return (
     <div>
       <div className={`${style.message} ${messageClass}`}>

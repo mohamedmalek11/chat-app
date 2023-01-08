@@ -1,17 +1,22 @@
 import React from "react";
 const style = {
-  message: `flex items-center shadow-xl m-4 py-2 px-3 rounded-full relative`,
-  name: `absolute mt-[-4rem] text-gray-600 text-xs`,
-  sent: `bg-[#395dff] text-white flex-row-reverse text-end float-right
-rounded-bl-full`,
-  received: `bg-[#e5e5ea] text-black float-left rounded-br-full`,
+  message: `flex flex-col relative items-start text-start`,
+  name: `text-gray-600 text-xs  mx-4`,
+  text: `shadow-xl m-2 mt-1 mb-4 py-1 px-[10px] rounded`,
+  sent: `bg-[#395dff] text-white flex-row-reverse rounded`,
+  received: `bg-[#e5e5ea] text-black rounded-br-full`,
+  textWrapper: {
+    backgroundColor: "",
+  },
 };
 function Message({ message }) {
   return (
     <div>
       <div className={style.message}>
-        <p className={style.name}>MOHAMED</p>
-        <p>{message.text}</p>
+        <p className={style.name}>{message.name}</p>
+        <div style={style.textWrapper} className={style.text}>
+          <p>{message.text}</p>
+        </div>
       </div>
     </div>
   );

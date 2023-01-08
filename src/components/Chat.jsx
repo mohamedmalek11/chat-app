@@ -2,8 +2,9 @@ import { query, collection, orderBy, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
 import { db } from "../firebase";
 import Message from "./Message";
+import SendMessage from "./SendMessage";
 const style = {
-  main: `flex flex-col p-[10px] relative`,
+  main: `flex flex-col p-[10px] pb-[40px] absolute top-[5rem] left-0 right-0 bottom-0 overflow-y-scroll`,
 };
 function Chat() {
   const [messages, setmessages] = useState([]);
@@ -31,6 +32,7 @@ function Chat() {
             })
           : null}
       </main>
+      <SendMessage scroll={scroll} />
       <span ref={scroll}></span>
     </>
   );

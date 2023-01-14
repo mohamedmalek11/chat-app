@@ -39,6 +39,13 @@
     ]
   },
   "devDependencies": {
+    "git-scripts": "^0.6.4",
+    "surge": "^0.23.1",
     "tailwindcss": "^3.2.4"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "surge --project ./build --domain my-chat-app.surge.sh"
+    }
   }
 }

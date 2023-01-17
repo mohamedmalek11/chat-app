@@ -21,7 +21,9 @@ function Message({ message }) {
   return (
     <div>
       <div className={`${style.message} ${messageClass}`}>
-        <p className={style.name}>{message.name}</p>
+        {message.uid !== auth.currentUser.uid ? (
+          <p className={style.name}>{message.name}</p>
+        ) : null}
         <div style={style.textWrapper} className={`${style.text} ${textClass}`}>
           <p>{message.text}</p>
         </div>
